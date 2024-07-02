@@ -60,14 +60,6 @@ namespace BF2Statistics.Database
         }
 
         /// <summary>
-        /// Destructor
-        /// </summary>
-        ~DatabaseDriver()
-        {
-            Dispose();
-        }
-
-        /// <summary>
         /// Disposes the DB connection
         /// </summary>
         public void Dispose()

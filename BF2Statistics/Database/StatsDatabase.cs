@@ -106,15 +106,6 @@ namespace BF2Statistics.Database
         }
 
         /// <summary>
-        /// Destructor
-        /// </summary>
-        ~StatsDatabase()
-        {
-            if (!IsDisposed)
-                base.Dispose();
-        }
-
-        /// <summary>
         /// Fetches the current tables version
         /// </summary>
         /// <remarks>

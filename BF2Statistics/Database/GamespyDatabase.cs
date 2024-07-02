@@ -67,15 +67,6 @@ namespace BF2Statistics.Database
         }
 
         /// <summary>
-        /// Destructor
-        /// </summary>
-        ~GamespyDatabase()
-        {
-            if (!IsDisposed)
-                base.Dispose();
-        }
-
-        /// <summary>
         /// Fetches an account from the gamespy database
         /// </summary>
         /// <param name="Nick">The user's Nick</param>

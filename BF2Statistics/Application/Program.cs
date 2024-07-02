@@ -72,6 +72,18 @@ namespace BF2Statistics
             Application.ThreadException += ExceptionHandler.OnThreadException;
             AppDomain.CurrentDomain.UnhandledException += ExceptionHandler.OnUnhandledException;
 
+            //ArchangelWTF: Some hacky way to make sure these always exist for now, should probably automatically check for this later in code at some point.
+            if(!Directory.Exists($"{Application.StartupPath}\\Logs"))
+            {
+                Directory.CreateDirectory($"{Application.StartupPath}\\Logs");
+            }
+
+            if (!Directory.Exists($"{Application.StartupPath}\\Snapshots"))
+            {
+                Directory.CreateDirectory($"{Application.StartupPath}\\Snapshots\\Temp");
+                Directory.CreateDirectory($"{Application.StartupPath}\\Snapshots\\Processed");
+            }
+
             // Create Error Log Writter object
             ErrorLog = new LogWriter(Path.Combine(Application.StartupPath, "Logs", "Error.log"));
 

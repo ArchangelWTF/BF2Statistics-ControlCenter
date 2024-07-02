@@ -14,19 +14,6 @@ namespace BF2Statistics
 {
     public partial class GamespyConfigForm : Form
     {
-        /// <summary>
-        /// A list of services that provide IP Address
-        /// checks
-        /// </summary>
-        private string[] IpServices = {
-            "http://bot.whatismyipaddress.com",
-            "http://icanhazip.com/",
-            "http://checkip.dyndns.org/",
-            "http://canihazip.com/s",
-            "http://ipecho.net/plain",
-            "http://ipinfo.io/ip"
-        };
-
         public GamespyConfigForm()
         {
             InitializeComponent();
@@ -72,24 +59,9 @@ namespace BF2Statistics
                     Web.Headers["Accept"] = "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8";
                     Web.Headers["Accept-Language"] = "en-US,en;q=0.8";
 
-                    // Loop through each service and check for our IP
-                    for (int i = 0; i < IpServices.Length; i++)
-                    {
-                        try
-                        {
-                            // Attempt to Fetch the IP address from this service
-                            string result = Web.DownloadString(IpServices[i]);
-                            Match match = Regex.Match(result, @"(?<IpAddress>\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})");
-                            if (match.Success && IPAddress.TryParse(match.Groups["IpAddress"].Value, out addy))
-                            {
-                                break; // Success, we have an IP so stop here
-                            }
-                        }
-                        catch
-                        {
-                            continue; // Error, Skip to next service
-                        }
-                    }
+                    string result = Web.DownloadString("https://ipv4.icanhazip.com/");
+                    Match match = Regex.Match(result, @"(?<IpAddress>\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})");
+                    IPAddress.TryParse(match.Groups["IpAddress"].Value, out addy);
                 }
             });
 

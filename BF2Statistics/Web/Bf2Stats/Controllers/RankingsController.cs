@@ -102,7 +102,7 @@ namespace BF2Statistics.Web.Bf2Stats
             }
 
             // Send response
-            base.SendTemplateResponse("rankings_index", typeof(RankingsModel), Model, "Rankings");
+            base.SendTemplateResponse("rankings_index", Model, "Rankings");
         }
 
         private void ShowRankingType(MvcRoute Route)
@@ -209,7 +209,7 @@ namespace BF2Statistics.Web.Bf2Stats
             }
 
             // Send response
-            base.SendTemplateResponse("rankings_type", typeof(RankingsTypeModel), Model, CacheName);
+            base.SendTemplateResponse("rankings_type", Model, CacheName);
         }
 
         /// <summary>
@@ -344,7 +344,7 @@ namespace BF2Statistics.Web.Bf2Stats
             {
                 if (i < Rows.Count)
                 {
-                    double ds = Double.Parse(Rows[i]["value"].ToString());
+                    double ds = Double.TryParse(Rows[i]["value"].ToString(), out ds) ? ds : 0;
                     string Val = ((ds % 1) != 0) ? Math.Round(ds, 4).ToString() : FormatNumber(ds);
 
                     Players.Add(new Player

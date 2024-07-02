@@ -1,7 +1,8 @@
-﻿@using RazorEngine.Templating
+﻿@using System
+@using RazorLight
 @using BF2Statistics.Web.Bf2Stats
 @using PlayerRow = BF2Statistics.Web.Bf2Stats.RankingsTypeModel.PlayerRow
-@inherits HtmlTemplateBase<RankingsTypeModel>
+@inherits TemplatePage<RankingsTypeModel>
 @{
     int i = 0;
     bool FilterCountry = !String.IsNullOrEmpty(Model.Country);

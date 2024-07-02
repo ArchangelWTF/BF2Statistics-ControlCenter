@@ -1,11 +1,12 @@
-﻿@using RazorEngine.Templating
+﻿@using System
+@using RazorLight
 @using BF2Statistics
 @using BF2Statistics.ASP
 @using StatsConstants = BF2Statistics.MedalData.StatsConstants
 @using BF2Statistics.Python
 @using BF2Statistics.Web.Bf2Stats
 @using System.Collections.Generic
-@inherits HtmlTemplateBase<PlayerModel>
+@inherits TemplatePage<PlayerModel>
 @{
     int i = 0;
     int j = 0;

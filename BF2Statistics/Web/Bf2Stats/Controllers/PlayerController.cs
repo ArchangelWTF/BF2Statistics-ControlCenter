@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -107,6 +108,14 @@ namespace BF2Statistics.Web.Bf2Stats
             #region ArmyData
             // Fetch army data
             Rows = Database.Query("SELECT * FROM army WHERE id=@P0", Pid);
+
+            //ArchangelWTF: If player has not played a round this is not filled, if it's not filled we can't render stats properly.. We should probably fix this later.
+            if (Rows.Count == 0)
+            {
+                Client.Response.Redirect("/bf2stats/search");
+                return;
+            }
+
             foreach (KeyValuePair<int, string> Army in Bf2StatsData.Armies)
             {
                 int Wins = Int32.Parse(Rows[0]["win" + Army.Key].ToString());
@@ -711,7 +720,7 @@ namespace BF2Statistics.Web.Bf2Stats
                 : Model.Root + "/images/soldiers/" + Model.Favorites["army"] + "_" + Model.Favorites["kit"] + "_5.jpg";
 
             // Send the response
-            base.SendTemplateResponse("player", typeof(PlayerModel), Model, Pid.ToString());
+            base.SendTemplateResponse("player", Model, Pid.ToString());
         }
 
         private void ShowRankings()
@@ -937,7 +946,7 @@ namespace BF2Statistics.Web.Bf2Stats
             #endregion
 
             // Send the response
-            base.SendTemplateResponse("player_rankings", typeof(PlayerRankingsModel), Model, Pid + "_rankings");
+            base.SendTemplateResponse("player_rankings", Model, Pid + "_rankings");
         }
 
         private void ShowHistory()
@@ -991,7 +1000,7 @@ namespace BF2Statistics.Web.Bf2Stats
             }
 
             // Send the response
-            base.SendTemplateResponse("player_history", typeof(PlayerHistoryModel), Model, cacheFile);
+            base.SendTemplateResponse("player_history", Model, cacheFile);
         }
 
         /// <summary>

@@ -143,7 +143,7 @@ namespace BF2Statistics.Web.Bf2Stats
                 Model.CookieValue = String.Empty;
 
             // Set content type
-            base.SendTemplateResponse("myleaderboard", typeof(LeaderboardModel), Model);
+            base.SendTemplateResponse("myleaderboard", Model);
         }
 
         private string GetOnlineStatus(int Pid)

@@ -96,7 +96,7 @@ namespace BF2Statistics.Web.Bf2Stats
             }
 
             // Send response
-            base.SendTemplateResponse("search", typeof(SearchModel), Model);
+            base.SendTemplateResponse("search", Model);
         }
     }
 }

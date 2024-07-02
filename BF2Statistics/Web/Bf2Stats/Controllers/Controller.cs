@@ -1,9 +1,8 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 using System.Text.RegularExpressions;
 using BF2Statistics.Database;
-using RazorEngine;
-using RazorEngine.Templating;
 
 namespace BF2Statistics.Web.Bf2Stats
 {
@@ -28,17 +27,6 @@ namespace BF2Statistics.Web.Bf2Stats
         /// Processes the request, and sends a resonse back to the client
         /// </summary>
         public abstract void HandleRequest(MvcRoute Route);
-
-        /// <summary>
-        /// Returns whether the template name provided has been compiled
-        /// with the Razor Engine
-        /// </summary>
-        /// <param name="Name">The name of the template</param>
-        /// <returns></returns>
-        protected bool EnsureTemplate(string Name)
-        {
-            return Engine.Razor.IsTemplateCached(Name + ".cshtml", HttpServer.ModelType);
-        }
 
         /// <summary>
         /// Returns whether or not the Cache file is expired
@@ -70,14 +58,21 @@ namespace BF2Statistics.Web.Bf2Stats
         /// <param name="ModelType">The Model type used in the template file</param>
         /// <param name="Model">The Model used in the template file</param>
         /// <param name="CacheFileName">The name of the Cached file if we are using one. Leave blank for no caching.</param>
-        protected void SendTemplateResponse(string TemplateName, Type ModelType, object Model, string CacheFileName = "")
+        protected void SendTemplateResponse<T>(string TemplateName, T Model, string CacheFileName = "")
         {
             // Send Response
             HttpResponse Response = Client.Response;
             Response.ContentType = "text/html";
             Response.Response.AddHeader("Cache-Control", "no-cache, no-store, must-revalidate");
             Response.Response.AddHeader("Expires", "0");
-            Response.ResponseBody.Append(Engine.Razor.Run(TemplateName + ".cshtml", ModelType, Model));
+
+#if DEBUG
+            Debug.WriteLine($"Model: {Model.GetType()}");
+            Debug.WriteLine($"CacheFileName: {CacheFileName}");
+            Debug.WriteLine(HttpServer.Engine.CompileRenderAsync(TemplateName + ".cshtml", Model).GetAwaiter().GetResult());
+#endif
+
+            Response.ResponseBody.Append(HttpServer.Engine.CompileRenderAsync(TemplateName + ".cshtml", Model).GetAwaiter().GetResult());
             Response.Send();
 
             // Process cache

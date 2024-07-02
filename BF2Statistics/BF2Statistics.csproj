@@ -4376,8 +4376,8 @@
     <PackageReference Include="Newtonsoft.Json">
       <Version>13.0.3</Version>
     </PackageReference>
-    <PackageReference Include="RazorEngine">
-      <Version>3.10.0</Version>
+    <PackageReference Include="RazorLight">
+      <Version>2.3.1</Version>
     </PackageReference>
     <PackageReference Include="System.Data.SQLite.Core">
       <Version>1.0.118</Version>

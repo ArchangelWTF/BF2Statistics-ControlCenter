@@ -1,11 +1,11 @@
-﻿using System;
+﻿using RazorLight.Compilation;
+using System;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Text;
 using System.Windows.Forms;
-using RazorEngine.Templating;
 
 namespace BF2Statistics
 {
@@ -165,20 +165,18 @@ namespace BF2Statistics
                 F.Message = "An error occured while trying to compile the file \"" + Path.GetFileName(fileRelativePath) + "\"";
                 F.ImgIcon = Properties.Resources.vistaWarning;
 
-                if (E.CompilerErrors.Count > 0)
+                if (E.CompilationErrors.Count > 0)
                 {
                     StringBuilder builder = new StringBuilder();
 
                     // Append each error's details into the Details stringbuilder
-                    foreach (RazorEngineCompilerError error in E.CompilerErrors)
+                    foreach (TemplateCompilationDiagnostic error in E.CompilationDiagnostics)
                     {
                         builder.AppendLine("Compile Error:");
-                        builder.AppendLine(error.ErrorText);
+                        builder.AppendLine(error.ErrorMessage);
                         builder.AppendLine();
-                        builder.AppendLine("Error #: " + error.ErrorNumber);
                         builder.AppendLine("File: " + fileRelativePath);
-                        builder.AppendLine("Line: " + error.Line);
-                        builder.AppendLine("Column: " + error.Column);
+                        builder.AppendLine("Line: " + error.LineSpan);
                         builder.AppendLine();
                     }
 

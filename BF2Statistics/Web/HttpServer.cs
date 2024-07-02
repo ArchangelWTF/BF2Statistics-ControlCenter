@@ -13,10 +13,8 @@ using BF2Statistics.Database;
 using BF2Statistics.Logging;
 using BF2Statistics.Web.ASP;
 using BF2Statistics.Web.Bf2Stats;
-using RazorEngine;
-using RazorEngine.Configuration;
-using RazorEngine.Templating;
-using RazorEngine.Text;
+using RazorLight;
+using RazorLight.Compilation;
 
 namespace BF2Statistics.Web
 {
@@ -36,6 +34,11 @@ namespace BF2Statistics.Web
         /// Limits the simultaneous connections to prevent an app overload
         /// </summary>
         private static SemaphoreSlim ConnectionPool;
+
+        /// <summary>
+        /// The RazorLightEngine we use for the Webserver
+        /// </summary>
+        internal static RazorLightEngine Engine;
 
         /// <summary>
         /// The StatsDebug.log file
@@ -196,7 +199,7 @@ namespace BF2Statistics.Web
             {
                 // If this template file is loaded already, then skip
                 string fileName = Path.GetFileName(file);
-                if (Engine.Razor.IsTemplateCached(fileName, ModelType))
+                if (Engine.Handler.Cache.RetrieveTemplate(fileName).Success)
                     continue;
 
                 // Open the file, and compile it
@@ -204,7 +207,7 @@ namespace BF2Statistics.Web
                 {
                     using (FileStream stream = File.OpenRead(file))
                     using (StreamReader reader = new StreamReader(stream))
-                        Engine.Razor.Compile(reader.ReadToEnd(), fileName, ModelType);
+                        Engine.CompileRenderStringAsync(fileName, reader.ReadToEnd(), ModelType);
                 }
                 catch (TemplateCompilationException e)
                 {
@@ -402,18 +405,23 @@ namespace BF2Statistics.Web
 
                         // Try and fetch the controller, and handle the request
                         Controller Cont = GetBf2StatsController(Route.Controller, Client);
+
+                        //Fetch Template from RazorLight
+                        var CacheResult = Engine.Handler.Cache.RetrieveTemplate(Route.Controller + ".cshtml");
+
                         if (Cont != null)
                         {
                             // We let the Controller handle the request from here
                             Cont.HandleRequest(Route);
                         }
                         // Check the Razor engine to see if we have this template compiled...
-                        else if (Engine.Razor.IsTemplateCached(Route.Controller + ".cshtml", ModelType))
+                        else if (CacheResult.Success)
                         {
                             // Custom made template with No Controller
                             Client.Response.ContentType = "text/html";
                             Client.Response.ResponseBody.Append(
-                                Engine.Razor.Run(Route.Controller + ".cshtml", ModelType, new IndexModel(Client))
+                                //Engine.Razor.Run(Route.Controller + ".cshtml", ModelType, new IndexModel(Client)),
+                                Engine.RenderTemplateAsync(CacheResult.Template.TemplatePageFactory(), new IndexModel(Client)).Result
                             );
                         }
                         else
@@ -523,13 +531,10 @@ namespace BF2Statistics.Web
         /// </summary>
         private static void CreateRazorService()
         {
-            // Setup RazorEngine
-            TemplateServiceConfiguration config = new TemplateServiceConfiguration();
-            config.CachingProvider = new DefaultCachingProvider();
-            config.EncodedStringFactory = new RawStringFactory();
-            config.DisableTempFileLocking = true;
-            config.BaseTemplateType = typeof(HtmlTemplateBase<>);
-            Engine.Razor = RazorEngineService.Create(config);
+            Engine = new RazorLightEngineBuilder()
+                .UseEmbeddedResourcesProject(typeof(HttpServer).Assembly, "Web.Bf2Stats.Views")
+                .UseMemoryCachingProvider()
+                .Build();
         }
 
         /// <summary>

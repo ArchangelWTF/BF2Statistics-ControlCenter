@@ -229,8 +229,14 @@ namespace BF2Statistics
             AddToMapList.Enabled = true;
 
             // If the freeimage library is not available, stop here
-            if (!FreeImage.IsAvailable())
+            try
+            {
+                FreeImage.ValidateAvailability();
+            }
+            catch(Exception)
+            {
                 return;
+            }
 
             // Load map image
             // Get Values

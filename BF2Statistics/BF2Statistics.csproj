@@ -36,7 +36,16 @@
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationManifest>app.manifest</ApplicationManifest>
-    <StartupObject>BF2Statistics.Program</StartupObject>
+    <Title>Battlefield 2 Statistics Control Center</Title>
+    <Description>A Battlefield 2 server manager packaged with a Gamespy emulator</Description>
+    <Company>BF2Statistics Redux</Company>
+    <Product>Battlefield 2 Statistics Control Center</Product>
+    <Copyright>Copyright © BF2 Statistics Redux 2006 - 2024</Copyright>
+    <Authors>$(AssemblyName)</Authors>
+    <PackageId>$(AssemblyName)</PackageId>
+    <PackageProjectUrl>https://github.com/ArchangelWTF/BF2Statistics-ControlCenter</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/ArchangelWTF/BF2Statistics-ControlCenter</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
   </PropertyGroup>
   <ItemGroup>
     <EmbeddedResource Include="Web\Bf2Stats\TheaterData.xml" />

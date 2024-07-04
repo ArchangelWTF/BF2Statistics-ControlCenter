@@ -10,4 +10,144 @@
     <FallbackCulture>en-US</FallbackCulture>
     <VerifyUploadedFiles>false</VerifyUploadedFiles>
   </PropertyGroup>
+  <ItemGroup>
+    <Compile Update="UI\ASP\ASPConfigForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="UI\ASP\EAStatsImportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="UI\ASP\GameResultForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="UI\ASP\LeaderboardConfigForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="UI\ASP\ManageStatsDBForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="UI\ASP\PlayerEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="UI\ASP\PlayerSearchForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="UI\ASP\SnapshotFilterForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="UI\ASP\SnapshotViewForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="UI\ClientParamsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="UI\Controls\MenuButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="UI\Controls\MyGroupBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="UI\Controls\PageControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="UI\Controls\ProgressDialog.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="UI\Controls\SplitButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="UI\DatabaseConfigForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="UI\ExceptionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="UI\GamespyRedirectForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="UI\Gamespy\AccountEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="UI\Gamespy\AccountListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="UI\Gamespy\CreateAcctForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="UI\Gamespy\GamespyConfigForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="UI\HostsFileTestForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="UI\InstallForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="UI\LoadingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="UI\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="UI\MedalData\ConditionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="UI\MedalData\ConditionListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="UI\MedalData\GlobalStatMultTimesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="UI\MedalData\MedalConditionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="UI\MedalData\MedalDataEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="UI\MedalData\NewCriteriaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="UI\MedalData\NewProfilePrompt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="UI\MedalData\ObjectStatForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="UI\MedalData\ScoreStatForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="UI\NativeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="UI\S2hmsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="UI\Server\BF2sConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="UI\Server\BotCountInfoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="UI\Server\ImageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="UI\Server\MapListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="UI\Server\RandomizeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="UI\Server\ScoreSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="UI\Server\ServerSettingsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="UI\Server\XpackMedalsConfigForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="UI\TaskForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
 </Project>

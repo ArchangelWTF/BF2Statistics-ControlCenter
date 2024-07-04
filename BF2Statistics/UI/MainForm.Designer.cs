@@ -191,9 +191,10 @@
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.Bf2StatisticsLink = new System.Windows.Forms.Button();
             this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBoxTitleAbout = new System.Windows.Forms.TextBox();
             this.NotificationIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -1850,6 +1851,7 @@
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.textBox1);
             this.groupBox5.Controls.Add(this.UpdateLabel);
             this.groupBox5.Controls.Add(this.UpdateStatusPic);
             this.groupBox5.Controls.Add(this.label19);
@@ -1861,7 +1863,7 @@
             this.groupBox5.Controls.Add(this.textBox3);
             this.groupBox5.Controls.Add(this.Bf2StatisticsLink);
             this.groupBox5.Controls.Add(this.textBox2);
-            this.groupBox5.Controls.Add(this.textBox1);
+            this.groupBox5.Controls.Add(this.textBoxTitleAbout);
             this.groupBox5.Location = new System.Drawing.Point(4, 7);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(570, 325);
@@ -1896,9 +1898,9 @@
             this.label19.AutoSize = true;
             this.label19.Location = new System.Drawing.Point(171, 298);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(228, 13);
+            this.label19.Size = new System.Drawing.Size(231, 13);
             this.label19.TabIndex = 14;
-            this.label19.Text = "A Gihub account is required to post new issues";
+            this.label19.Text = "A Github account is required to post new issues";
             // 
             // ReportBugBtn
             // 
@@ -1966,7 +1968,7 @@
             this.Bf2StatisticsLink.Name = "Bf2StatisticsLink";
             this.Bf2StatisticsLink.Size = new System.Drawing.Size(125, 25);
             this.Bf2StatisticsLink.TabIndex = 7;
-            this.Bf2StatisticsLink.Text = "Visit Bf2statistics.com";
+            this.Bf2StatisticsLink.Text = "Visit Github";
             this.Bf2StatisticsLink.UseVisualStyleBackColor = true;
             this.Bf2StatisticsLink.Click += new System.EventHandler(this.Bf2StatisticsLink_Click);
             // 
@@ -1974,24 +1976,24 @@
             // 
             this.textBox2.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox2.Location = new System.Drawing.Point(22, 162);
+            this.textBox2.Location = new System.Drawing.Point(22, 176);
             this.textBox2.Name = "textBox2";
             this.textBox2.ReadOnly = true;
             this.textBox2.Size = new System.Drawing.Size(300, 13);
             this.textBox2.TabIndex = 6;
-            this.textBox2.Text = "Copyright 2006-2015 BF2Statistics.com. All Rights Reserved";
+            this.textBox2.Text = "Copyright 2006-2024 BF2 Statistics Redux. All Rights Reserved";
             // 
-            // textBox1
+            // textBoxTitleAbout
             // 
-            this.textBox1.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(22, 129);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(300, 13);
-            this.textBox1.TabIndex = 5;
-            this.textBox1.Text = "Battlefield 2 Statistics Control Center v2.3.4";
+            this.textBoxTitleAbout.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.textBoxTitleAbout.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxTitleAbout.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxTitleAbout.Location = new System.Drawing.Point(22, 129);
+            this.textBoxTitleAbout.Name = "textBoxTitleAbout";
+            this.textBoxTitleAbout.ReadOnly = true;
+            this.textBoxTitleAbout.Size = new System.Drawing.Size(300, 13);
+            this.textBoxTitleAbout.TabIndex = 5;
+            this.textBoxTitleAbout.Text = "Battlefield 2 Statistics Control Center";
             // 
             // NotificationIcon
             // 
@@ -2008,6 +2010,17 @@
             this.pictureBox1.Size = new System.Drawing.Size(586, 80);
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
+            // 
+            // textBox1
+            // 
+            this.textBox1.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox1.Location = new System.Drawing.Point(22, 161);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(300, 13);
+            this.textBox1.TabIndex = 17;
+            this.textBox1.Text = "Maintained by: Archangel (ArchangelWTF)";
             // 
             // MainForm
             // 
@@ -2147,7 +2160,7 @@
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Button Bf2StatisticsLink;
         private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBoxTitleAbout;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Button SetupBtn;
@@ -2260,6 +2273,7 @@
         private System.Windows.Forms.PictureBox GStatus;
         private System.Windows.Forms.Label GSAddress1;
         private System.Windows.Forms.Label GSAddress2;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
 

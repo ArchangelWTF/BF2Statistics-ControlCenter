@@ -84,6 +84,7 @@ namespace BF2Statistics
             labelTotalWebRequests.Text = Config.TotalASPRequests.ToString();
             HostsLockCheckbox.Checked = Config.LockHostsFile;
             HostsLockCheckbox.CheckedChanged += HostsLockCheckbox_CheckedChanged;
+            textBoxTitleAbout.Text += $" v{Program.Version}";
 
             // If we dont have a client path, disable the Launch Client button
             LaunchClientBtn.Enabled = (!String.IsNullOrWhiteSpace(Config.ClientPath) && File.Exists(Path.Combine(Config.ClientPath, "bf2.exe")));
@@ -1556,7 +1557,7 @@ namespace BF2Statistics
 
         private void Bf2StatisticsLink_Click(object sender, EventArgs e)
         {
-            Process.Start("http://www.bf2statistics.com/");
+            Process.Start("https://github.com/ArchangelWTF/BF2Statistics-ControlCenter");
         }
 
         /// <summary>
@@ -1596,7 +1597,7 @@ namespace BF2Statistics
         /// </summary>
         private void ReportBugBtn_Click(object sender, EventArgs e)
         {
-            Process.Start("https://github.com/BF2Statistics/ControlCenter/issues");
+            Process.Start("https://github.com/ArchangelWTF/BF2Statistics-ControlCenter/issues");
         }
 
         #endregion About Tab

@@ -21,6 +21,18 @@ namespace BF2Statistics
         {
             InitializeComponent();
 
+            if (!string.IsNullOrEmpty(Program.Config.ClientPath))
+            {
+                ClientPath.Text = Program.Config.ClientPath;
+                ClientInstallPath = Program.Config.ClientPath;
+            }
+
+            if (!string.IsNullOrEmpty(Program.Config.ServerPath))
+            {
+                ServerPath.Text = Program.Config.ServerPath;
+                ServerInstallPath = Program.Config.ServerPath;
+            }
+
             // Check for BF2 Client Installation (32 bit)
             try
             {

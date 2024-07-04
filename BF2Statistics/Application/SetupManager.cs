@@ -12,7 +12,7 @@ namespace BF2Statistics
         /// phase, and show the installation forms
         /// </summary>
         /// <returns>Returns false if the user cancels the setup before the basic settings are setup, true otherwise</returns>
-        public static bool Run()
+        public static bool Run(bool ForceSetup = false)
         {
             // Load the program config
             Settings Config = Settings.Default;
@@ -27,7 +27,7 @@ namespace BF2Statistics
             }
 
             // If this is the first run, Get client and server install paths
-            if (String.IsNullOrWhiteSpace(Config.ServerPath) || !File.Exists(Path.Combine(Config.ServerPath, "bf2_w32ded.exe")))
+            if (String.IsNullOrWhiteSpace(Config.ServerPath) || ForceSetup || !File.Exists(Path.Combine(Config.ServerPath, "bf2_w32ded.exe")))
             {
                 PromptDbSetup = true;
                 if (!ShowInstallForm())

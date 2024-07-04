@@ -1564,8 +1564,7 @@ namespace BF2Statistics
         /// </summary>
         private void SetupBtn_Click(object sender, EventArgs e)
         {
-            Config.ServerPath = "";
-            if (!SetupManager.Run())
+            if (!SetupManager.Run(true))
             {
                 Config.Reload();
             }
